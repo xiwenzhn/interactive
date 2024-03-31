@@ -3,49 +3,53 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>xiwen's class website</title>
+    <title>xiwen</title>
+    <style> 
+
+    </style>
     <link rel="icon" type="image/png" href="images/icon.png"/>
   </head>
   <body>
-    <h1 id="top">xiwen's class website</h1>
-    <h2>Class projects</h2>
-    <ol>
-      <li>
-        Project 1
-      </li>
-      <li>
-        Project 2 (coming soon!)
-      </li>
-      <li>
-        Project 3 (coming soon!)
-      </li>
-    </ol>
-    <h2>Exercises</h2>
-    <a href="exercises/song.html">Variations on a song</a>
-    <br>
-    <br>
-    <br>
-    <div>
-      <h4>About this site</h4>
-      <p>Here's a little paragraph about this site, in a paragraph tag... This is just some sample code to help you get started. You'll notice the HTML page has all the basic parts. You can change the title and the h1 at the top to include your name. I also set up a few links... click on "Top 10" and you'll go to the start of a top 10 list... then there's a link back to this page. Can copy and paste any of these tags or delete them and replace with your own content.</p>
-      <div>
-        <a href="http://software-for-people.net/">Visit my homepage!</a>
-      </div>
-    </div>
-    <p>Technology is <b>truly</b> amazing!</p>
-    <div>
-      <img src="images/penny.png">
-    </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <footer>
-      <div>
-        <a href="#top">Back to top</a>
-      </div>
+<script src="https://cdn.jsdelivr.net/npm/p5.glitch@latest/p5.glitch.js"></script>
+<style>
+let glitch;
+
+function setup() {
+    createCanvas(windowWidth, windowHeight);
+    
+    /* create glitch instance */
+    glitch = new Glitch();
+    
+    /* optional settings */
+    // glitch.pixelate(1); // hard pixel edges (pixelDensity)
+    // glitch.errors(false); // hide any bad data warnings
+    // glitch.debug(); // show debugs - avoid if anything called in draw()
+    // glitch.debug(false); // hide debug
+}
+/* load image */
+glitch.loadType('jpg'); // specify jpeg file glitching, default
+glitch.loadQuality(.25); // optionally crunch to low quality
+glitch.loadImage('data/images/fish.png'); // load image by path
+// glitch.loadImage(capture); // load existing p5.js image
+
+/* reset bytes */
+// glitch.resetBytes(); // reset glitch to original bytes if loaded in setup
+ 
+/* sample glitching functions */
+glitch.randomBytes(10); // randomize 10 bytes
+glitch.replaceBytes(45, 127); // find + replace all
+glitch.replaceHex('ffdb00430001','ffdb004300ff'); // jpg quant table
+
+/* build and display image */
+glitch.buildImage(); // creates image from glitched data
+image(glitch.image, 0, 0); // display glitched image
+
+/* save image */
+glitch.saveImage('fish_glitched.jpg'); // save raw glitched file
+// glitch.saveSafe('fish_glitched'); // save safe glitched file
+// glitch.saveCanvas('fish_glitched'); //  saves entire canvas
+</style>
+   
     </footer>
   </body>
 </html>
